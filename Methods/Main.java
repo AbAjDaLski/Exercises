@@ -6,7 +6,7 @@ public class Main {
         boolean gameOver = true;
         int score = 800;
         int levelCompleted = 5;
-        int bonus = 100;
+        int bonus = 1000;
 
         int highScore = calculatScore(gameOver, score, levelCompleted, bonus);
         System.out.println(" Your finalScore was " + highScore);
