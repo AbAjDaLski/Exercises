@@ -1,20 +1,18 @@
 package pl.coderstrust.sort;
 
-import java.util.Arrays;
-
 public class Bubble_Sort {
-    public static void main(String[] args) {
-        Integer[] numbers = {18, 9, 1, 3, 12, 17};
-        System.out.println("numbers in array");
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.print(numbers[i] + " ");
-        }
-        System.out.println();
-        System.out.println("***************************************************");
-        Integer[] results = bubblesort(numbers);
-        System.out.println("results after BubbleSort : ");
-        System.out.println(Arrays.toString(results));
-    }
+//    public static void main(String[] args) {
+//        Integer[] numbers = {18, 9, 1, 3, 12, 17};
+//        System.out.println("numbers in array");
+//        for (int i = 0; i < numbers.length; i++) {
+//            System.out.print(numbers[i] + " ");
+//        }
+//        System.out.println();
+//        System.out.println("***************************************************");
+//        Integer[] results = bubblesort(numbers);
+//        System.out.println("results after BubbleSort : ");
+//        System.out.println(Arrays.toString(results));
+//    }
     public static Integer[] bubblesort(Integer[] numToSort) {
         Integer temp;
         Integer change;
