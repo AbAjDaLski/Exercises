@@ -3,8 +3,8 @@ package pl.coderstrust.sort;
 import java.util.Arrays;
 
 public class SelectionSort {
-        public static void main(String[] args) {
-            System.out.println("SelectionSort");
+    public static void main(String[] args) {
+        System.out.println("SelectionSort"); //ss
         Integer[] numbers = {5, 9, 1, 13, 45, 17};   // initiale array
         Integer[] results = insort(numbers);
         System.out.println("results : ");
