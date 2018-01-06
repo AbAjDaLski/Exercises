@@ -21,7 +21,7 @@ public class SelectionSort {
                 }
             }
         }
-        return numToSort;
+            return numToSort;
     }
 }
 
