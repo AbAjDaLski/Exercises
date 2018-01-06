@@ -6,7 +6,7 @@ import static org.junit.Assert.assertArrayEquals;
 
 public class Bubble_SortTest {
     @Test
-    public void souldSortSimplyArray(){
+    public void shouldSortSimplyArray(){
         //given
         Integer[] numbers = {18, 9, 1, 3, 12, 17};
         //when
