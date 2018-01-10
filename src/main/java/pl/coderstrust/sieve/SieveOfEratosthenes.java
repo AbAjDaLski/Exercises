@@ -11,7 +11,7 @@ public class SieveOfEratosthenes {
 
     public static int[] sieve(int maximumNumber) {
         int startNumber = 2;
-        int t[] = new int[maximumNumber - startNumber+1];
+        int t[] = new int[maximumNumber - startNumber + 1];
         for (int i = 0; i < t.length; i++) {
             t[i] = startNumber + i;
         }
@@ -24,9 +24,8 @@ public class SieveOfEratosthenes {
             }
             do {
                 index++;
-             System.out.println(" " + Arrays.toString(t));
+                System.out.println(" " + Arrays.toString(t));
             } while (t[index] == 0);
-
         }
         return t;
     }
