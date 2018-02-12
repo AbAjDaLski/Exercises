@@ -1,4 +1,4 @@
-package pl.coderstrust.Figures;
+package pl.coderstrust.figures;
 
 public class Circle implements Figure {
     private final double PI = 3.14;

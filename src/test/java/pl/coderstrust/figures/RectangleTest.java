@@ -1,20 +1,20 @@
-package pl.coderstrust.Figures;
+package pl.coderstrust.figures;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 
-public class TrapezoidTest {
-    private Figure trapezoid = new Trapezoid(2,4,3);
+public class RectangleTest {
+    private Figure rectangle = new Rectangle(2,4);
     private double area;
     private double expetedArea;
     @Test
     public void shouldCalculateAreaIsRightCount() throws Exception {
         //given
-        area = 9;
+        area = 8;
         //when
-        expetedArea = trapezoid.calculateArea();
+        expetedArea = rectangle.calculateArea();
         //then
         Assert.assertThat(expetedArea, is(area));
     }
