@@ -1,5 +1,5 @@
-.idea/
-target/
-test.iml
-CharAndBoolean/
-FloatandDouble/
+/**/*.iml
+/**/.idea/
+/**/out/
+/**/lib/
+/**/target/
