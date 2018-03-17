@@ -1,22 +1,14 @@
 package pl.coderstrust.myOwnAarrayList;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
-public class MyArrayList implements List<Long> {
-    private Long data[];
-    private int dataSize = 0;
+public class ArrayList implements List<Long> {
 
-    public MyArrayList() {
-        this.data = new Long[7];
-    }
-
+    private List<Long> Data = new ArrayList();
 
     @Override
     public int size() {
-        return dataSize;
+        return 0;
     }
 
     @Override
@@ -31,24 +23,7 @@ public class MyArrayList implements List<Long> {
 
     @Override
     public Iterator<Long> iterator() {
-        return new Iterator<Long>() {
-            @Override
-            public boolean hasNext() {
-                return false;
-            }
-
-            @Override
-            public Long next() {
-                return null;
-            }
-        };
-    }
-
-    public static void main(String[] args) {
-        Iterator<Long> it = new MyArrayList().iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
+        return null;
     }
 
     @Override
@@ -63,12 +38,6 @@ public class MyArrayList implements List<Long> {
 
     @Override
     public boolean add(Long aLong) {
-        if (dataSize < data.length) {
-            data[dataSize] = aLong;
-            dataSize++;
-            return true;
-
-        }
         return false;
     }
 
@@ -109,7 +78,7 @@ public class MyArrayList implements List<Long> {
 
     @Override
     public Long get(int index) {
-        return data[index];
+        return null;
     }
 
     @Override
