@@ -8,6 +8,7 @@ import java.util.ListIterator;
 public class MyArrayList implements List<Long> {
     private Long data[];
     private int dataSize = 0;
+    private Object [] internalArray;
 
     public MyArrayList() {
         this.data = new Long[7];
@@ -16,6 +17,7 @@ public class MyArrayList implements List<Long> {
 
     @Override
     public int size() {
+
         return dataSize;
     }
 
@@ -44,10 +46,13 @@ public class MyArrayList implements List<Long> {
         };
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {                // to test
         Iterator<Long> it = new MyArrayList().iterator();
         while (it.hasNext()) {
             System.out.println(it.next());
+        }
+        for (Long longNumber : new MyArrayList()){ //syntactic sugar
+
         }
     }
 
