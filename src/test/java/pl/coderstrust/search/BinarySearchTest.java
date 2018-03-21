@@ -19,7 +19,7 @@ public class BinarySearchTest {
         //when
         long timeBefore = System.nanoTime();
 
-        int result = LinearSearch.search(arrayTest, 1000000);
+        int result = BinarySearch.search(arrayTest, 1000000);
 
         long timeAfter = System.nanoTime();
 
