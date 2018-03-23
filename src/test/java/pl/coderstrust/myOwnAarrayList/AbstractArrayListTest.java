@@ -7,8 +7,8 @@ import java.util.List;
 
 public abstract class AbstractArrayListTest {
 
-    protected List<Long> givenList;
-    protected List<Long> expectedList;
+    List<Long> givenList;
+    List<Long> expectedList;
 
 
     @Test
@@ -22,5 +22,45 @@ public abstract class AbstractArrayListTest {
         //then
         Assert.assertEquals(expectedList.get(0), givenList.get(0));
         Assert.assertEquals(expectedList.get(1), givenList.get(1));
+    }
+
+    @Test
+    public void shouldToCheckIfArrayListIsEmpty(){
+        //given
+
+
+        //when
+
+        //then
+        Assert.assertTrue(expectedList.isEmpty());
+
+    }
+
+    @Test
+    public void shouldToCheckIfArrayListIsNotEmpty(){
+        //given
+
+
+        //when
+        expectedList.add(1L);
+
+        //then
+        Assert.assertFalse(expectedList.isEmpty());
+
+    }
+
+    @Test
+    public void shouldSetElementValue(){
+        //given
+        Long givenValue=10L;
+        Long expectedValue=0L;
+
+        //when
+        expectedList.add(givenValue);
+        expectedList.set(0,expectedValue);
+
+
+        //then
+        Assert.assertEquals(expectedValue,expectedList.get(0));
     }
 }
