@@ -1,9 +1,6 @@
 package pl.coderstrust.myOwnAarrayList;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class MyArrayList implements List<Long> {
     private Long data[];
@@ -31,43 +28,30 @@ public class MyArrayList implements List<Long> {
 
     @Override
     public boolean contains(Object o) {
-        Iterator<Long> data = iterator();
-        if (o==null) {
-            while (data.hasNext())
-                if (data.next()==null)
-                    return true;
-        } else {
-            while (data.hasNext())
-                if (o.equals(data.next()))
-                    return true;
-        }
-        return false;
+        return indexOf(o) > -1;
     }
 
     @Override
     public Iterator<Long> iterator() {
         return new Iterator<Long>() {
+            int index = 0;
+
             @Override
-            public boolean hasNext() {
-                return false;
+            public boolean hasNext() {  //informuje czy są jeszcze elementy w tablicy
+                return index < dataSize;
             }
 
             @Override
-            public Long next() {
-                return null;
+            public Long next() { // pobiera kolejny element z tablicy
+                if (hasNext()) {
+                    return data[index++]; //(Long)data.get(index);
+                }
+                throw new IndexOutOfBoundsException();
             }
+            //void remove();//Służy do usunięcia z niej elementu, który był jako ostatni przekazany jako wynik metody next
         };
     }
 
-    public static void main(String[] args) {                // to test
-        Iterator<Long> it = new MyArrayList().iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
-        for (Long longNumber : new MyArrayList()) { //syntactic sugar
-
-        }
-    }
 
     @Override
     public Object[] toArray() {
@@ -85,13 +69,13 @@ public class MyArrayList implements List<Long> {
             data[dataSize] = aLong;
             dataSize++;
             return true;
-
         }
         return false;
     }
 
     @Override
     public boolean remove(Object o) { //przeszukać tablice czy zawiera ten element, jak tak to usuwa go
+
 
         return false;
     }
@@ -128,7 +112,6 @@ public class MyArrayList implements List<Long> {
 
     @Override
     public Long get(int index) {
-
         return data[index];
     }
 
@@ -150,38 +133,35 @@ public class MyArrayList implements List<Long> {
     @Override
     public Long remove(int index) {        // to
         if (index >= 0 && index <= data.length) {
-            data[index] = null;
+            long deletedElement = data[index];
+            System.arraycopy(data, index + 1, data, index, dataSize - (index - 1));
+            return deletedElement;
         }
-        return null;
+        throw new IndexOutOfBoundsException();
     }
 
     @Override      //  metoda jako parametr przyjmuje element listy i zwraca indeks pierwszego wystąpienia,
     public int indexOf(Object o) {
-//        for(int i=0;i<dataSize;i++){
-//            if (data[i]==o){
-//                return i;
-//            }
-//        }
-        int couter=0;
-        while (couter<dataSize){
-            if (data[couter]==o){
+        int couter = 0;
+        while (couter < dataSize) {
+            if (data[couter] == o) {
                 return couter;
-            }else {
-                couter++;
-            };
+            }
+            couter++;
         }
-        return 0;
+        return -1;
     }
 
     @Override   //metoda jako parametr przyjmuje element listy i zwraca indeks ostatniego wystąpienia.
     public int lastIndexOf(Object o) {
-        int couter=dataSize-1;
-        while (dataSize-1>=0){
-            if (o.equals(data[couter])){
+        int couter = dataSize - 1;
+        while (dataSize - 1 >= 0) {
+            if (o.equals(data[couter])) {
                 return couter;
-            }else {
+            } else {
                 couter--;
-            };
+            }
+            ;
         }
         return 0;
     }

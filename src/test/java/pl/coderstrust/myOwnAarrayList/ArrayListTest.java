@@ -10,6 +10,5 @@ public class ArrayListTest extends AbstractArrayListTest {
     public void setArray() {
         expectedList = new ArrayList<>();
         givenList = new ArrayList<>();
-
     }
 }
