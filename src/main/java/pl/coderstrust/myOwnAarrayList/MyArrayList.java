@@ -3,16 +3,17 @@ package pl.coderstrust.myOwnAarrayList;
 import java.util.*;
 
 public class MyArrayList implements List<Long> {
+
     private Long data[];
     private int dataSize = 0;
-    private Object[] internalArray;
+    private Long[] internalArray;
 
     public MyArrayList() {
         this.data = new Long[7];
     }
 
     @Override
-    public int size() {
+    public int size() {  //?
         System.out.println("The size of ArrayList is :" + dataSize);
         return dataSize;
     }
@@ -27,8 +28,8 @@ public class MyArrayList implements List<Long> {
     }
 
     @Override
-    public boolean contains(Object o) {
-        return indexOf(o) > -1;
+    public boolean contains(Object o) { //?
+        return indexOf(o) > -1;   //>=0
     }
 
     @Override
@@ -48,14 +49,18 @@ public class MyArrayList implements List<Long> {
                 }
                 throw new IndexOutOfBoundsException();
             }
-            //void remove();//Służy do usunięcia z niej elementu, który był jako ostatni przekazany jako wynik metody next
         };
     }
 
-
     @Override
-    public Object[] toArray() {
-        return new Object[0];
+    public Object[] toArray() {        // liste przekazuje do tablicy  To nowe ?
+        //new Object[0];
+        Object[] internalArray = new Object[dataSize];
+        for (int i = 0; i < dataSize; i++) {
+            internalArray[i] = data[i];
+        }
+        Object[] internalArraycopy = internalArray.clone();
+        return internalArraycopy;
     }
 
     @Override
@@ -65,6 +70,10 @@ public class MyArrayList implements List<Long> {
 
     @Override
     public boolean add(Long aLong) {
+//        int index=0;
+//        data[index]=aLong;
+//        index ++;
+
         if (dataSize < data.length) {
             data[dataSize] = aLong;
             dataSize++;
@@ -74,9 +83,31 @@ public class MyArrayList implements List<Long> {
     }
 
     @Override
-    public boolean remove(Object o) { //przeszukać tablice czy zawiera ten element, jak tak to usuwa go
-
-
+    public boolean remove(Object o) { //przeszukać tablice czy zawiera ten element, jak tak to usuwa go  ?
+        //counter licznik zliczający obecną ilość elementów tablicy indexy
+        if (o == null) {
+            for (int index = 0; index < dataSize; index++) {
+                if (data[index] == null) {
+                    int newSizeAfterRemoved = dataSize - index - 1;
+                    if (newSizeAfterRemoved > 0) {
+                        System.arraycopy(data, index + 1, data, index, newSizeAfterRemoved);
+                        data[--dataSize] = null;
+                    }
+                }
+                return true;
+            }
+        } else {
+            for (int index = 0; index < dataSize; index++) {
+                if (o.equals(data[index])) {
+                    int newSizeAfterRemoved = dataSize - index - 1;
+                    if (newSizeAfterRemoved > 0) {
+                        System.arraycopy(data, index + 1, data, index, newSizeAfterRemoved);
+                        data[--dataSize] = null;
+                    }
+                }
+                return true;
+            }
+        }
         return false;
     }
 
@@ -105,14 +136,17 @@ public class MyArrayList implements List<Long> {
         return false;
     }
 
-    @Override
+    @Override  // zrobine
     public void clear() {
-
+        dataSize = 0;
     }
 
     @Override
     public Long get(int index) {
-        return data[index];
+        if (index >= 0 && index < dataSize) {
+            return data[index];
+        }
+        throw new IndexOutOfBoundsException();
     }
 
     @Override
@@ -128,13 +162,28 @@ public class MyArrayList implements List<Long> {
     @Override
     public void add(int index, Long element) {
 
+        if (index>=0 && index < dataSize) {
+
+            long[]temp=new long[dataSize++];
+            System.arraycopy(data,0,temp,1,dataSize-index-1);
+            data[index] = element;
+            //odrazu powiekszy tablice odrazu
+
+            // tablica się zwiększyla o jeden element
+        } // jak przesunąć  elementy za indexem gdzie dodałem element o jedno w prawo
+        // najpierw przekopiować elementy z indexem, potemw te miejsce wstawić nowy element
+
+        else {
+            throw new IndexOutOfBoundsException();
+        }
     }
 
     @Override
-    public Long remove(int index) {        // to
+    public Long remove(int index) {
         if (index >= 0 && index <= data.length) {
             long deletedElement = data[index];
             System.arraycopy(data, index + 1, data, index, dataSize - (index - 1));
+            dataSize--;
             return deletedElement;
         }
         throw new IndexOutOfBoundsException();
@@ -175,6 +224,16 @@ public class MyArrayList implements List<Long> {
     public ListIterator<Long> listIterator(int index) {
         return null;
     }
+
+//    @Override
+//    public ListIterator<Long> listIterator() {
+//        return null;
+//    }
+//
+//    @Override
+//    public ListIterator<Long> listIterator(int index) {
+//        return null;
+//    }
 
     @Override
     public List<Long> subList(int fromIndex, int toIndex) {
