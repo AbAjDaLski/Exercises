@@ -125,25 +125,25 @@ public class AbstractArrayListTest {
     }
 
     @Test
-    public void shouldCheckArrayListIsCleared(){  //?
+    public void shouldCheckArrayListIsCleared() {  //?
 
         //given
 
         //when
 
         expectedList.clear();
-        int result=expectedList.size();
+        int result = expectedList.size();
 
         //then
-        Assert.assertEquals(0,result);
+        Assert.assertEquals(0, result);
     }
 
     @Test   //?
-    public void shouldReternListInArray(){
+    public void shouldReternListInArray() {
         //given
 
         //when
-        Object [] result=expectedList.toArray();
+        Object[] result = expectedList.toArray();
 
         //then
 //        Assert.assertArrayEquals(new List[]{expectedList},result);
@@ -151,11 +151,11 @@ public class AbstractArrayListTest {
     }
 
     @Test
-    public void shouldCheckRemoveElementOfData(){
+    public void shouldCheckRemoveElementOfData() {
         //given
 
         //when
-        boolean result=expectedList.remove(3L);
+        boolean result = expectedList.remove(3L);
         System.out.println(expectedList.get(1));
         //then
         Assert.assertTrue(result);
