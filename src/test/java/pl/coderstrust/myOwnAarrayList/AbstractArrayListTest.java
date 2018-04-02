@@ -125,7 +125,7 @@ public class AbstractArrayListTest {
     }
 
     @Test
-    public void shouldCheckArrayListIsCleared() {  //?
+    public void shouldCheckArrayListIsCleared() {
 
         //given
 
@@ -138,7 +138,7 @@ public class AbstractArrayListTest {
         Assert.assertEquals(0, result);
     }
 
-    @Test   //?
+    @Test
     public void shouldReternListInArray() {
         //given
 
