@@ -7,6 +7,8 @@ import org.junit.Test;
 import java.util.Iterator;
 import java.util.List;
 
+import static java.lang.System.out;
+
 public class AbstractArrayListTest {
 
     List<Long> givenList = new MyArrayList();
@@ -47,7 +49,7 @@ public class AbstractArrayListTest {
     }
 
     @Test
-    public void shouldToCheckWorkIteratr() {
+    public void shouldToCheckWorkIterator() {
 
         //given
         Iterator<Long> myIterator = expectedList.iterator();
@@ -62,7 +64,8 @@ public class AbstractArrayListTest {
     }
 
     @Test
-    public void shouldCheckRemoveRithgElement() {
+    public void shouldCheckRemoveRightElement() {
+
         //given
 
         //when
@@ -73,8 +76,10 @@ public class AbstractArrayListTest {
     }
 
     @Test
-    public void shouldToAddElemtntToList() {
+    public void shouldToAddElementToList() {
+
         //given
+
 
         //when
         givenList.add(5L);
@@ -130,7 +135,6 @@ public class AbstractArrayListTest {
         //given
 
         //when
-
         expectedList.clear();
         int result = expectedList.size();
 
@@ -139,27 +143,46 @@ public class AbstractArrayListTest {
     }
 
     @Test
-    public void shouldReternListInArray() {
+    public void shouldReturnListInArray() {
+
         //given
 
         //when
         Object[] result = expectedList.toArray();
 
         //then
-//        Assert.assertArrayEquals(new List[]{expectedList},result);
 
     }
 
     @Test
     public void shouldCheckRemoveElementOfData() {
+
         //given
 
         //when
         boolean result = expectedList.remove(3L);
-        System.out.println(expectedList.get(1));
+        out.println(expectedList.get(1));
+
         //then
         Assert.assertTrue(result);
 
 
+    }
+
+    @Test
+    public void shouldReturnListBetweenIndexes() {
+
+        //given
+        givenList.add(5L);
+        givenList.add(3L);
+
+        //when
+        List<Long> result = expectedList.subList(0, 3);
+
+        //then
+        assertArrayEquals(givenList, result);
+    }
+
+    private void assertArrayEquals(List<Long> longs, List<Long> result) {
     }
 }

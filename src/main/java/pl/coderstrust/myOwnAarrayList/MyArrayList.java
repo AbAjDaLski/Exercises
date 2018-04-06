@@ -55,10 +55,8 @@ public class MyArrayList implements List<Long> {
 
     @Override
     public Object[] toArray() {
-        Object[] internalArray = new Object[dataSize];
-        for (int i = 0; i < dataSize; i++) {
-            internalArray[i] = data[i];
-        }
+        Object[] internalArray = new Object[size()];
+        System.arraycopy(data, 0, internalArray, 0, size());
         Object[] internalArraycopy = internalArray.clone();
         return internalArraycopy;
     }
